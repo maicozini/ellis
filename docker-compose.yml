@@ -1,0 +1,18 @@
+# Versão do Docker Compose
+version: '3.8'
+
+# Definição dos serviços (containers) da nossa aplicação
+services:
+  # Nosso serviço da API
+  api:
+    # Instrui o Compose a construir a imagem a partir do Dockerfile no diretório atual (.)
+    build: .
+    # Define um nome para o container para fácil identificação
+    container_name: ape
+    # Mapeia a porta 8000 do seu computador (host) para a porta 8000 do container
+    ports:
+      - "8000:8000"
+    # Monta um volume para persistir os dados do banco de dados
+    volumes:
+      # O arquivo 'escola.db' criado dentro de /app no container será salvo no volume 'db_data'
+      - ./escola.db:/app/escola.db
